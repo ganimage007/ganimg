@@ -151,7 +151,7 @@ def main():
 def load_training_data(data_dir, data_set):
 	
 		#h = h5py.File(join(data_dir, 'face_tv.hdf5'))
-	h = pickle.load(open(data_dir+'/','rb'))
+	h = pickle.load(open(data_dir,'rb'))
 	face_captions = {}
 	for key in h.keys():
 		face_captions[key] = h[key]
