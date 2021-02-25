@@ -149,7 +149,7 @@ def main():
 			save_path = saver.save(sess, "/media/ssd_working_space/osaid/Data/Models/model_after_{}_epoch_{}.ckpt".format(args.data_set, i))
 
 def load_training_data(data_dir, data_set):
-	if data_set == 'list_attr_celeba':
+	if data_set == 'content/list_attr_celeba.csv':
 		#h = h5py.File(join(data_dir, 'face_tv.hdf5'))
 		h = pickle.load(open(data_dir+'/train_encoding','rb'))
 		face_captions = {}
