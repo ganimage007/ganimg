@@ -149,21 +149,21 @@ def main():
 			save_path = saver.save(sess, "/media/ssd_working_space/osaid/Data/Models/model_after_{}_epoch_{}.ckpt".format(args.data_set, i))
 
 def load_training_data(data_dir, data_set):
-	if data_set == 'content/list_attr_celeba.csv':
+	
 		#h = h5py.File(join(data_dir, 'face_tv.hdf5'))
-		h = pickle.load(open(data_dir+'/','rb'))
-		face_captions = {}
-		for key in h.keys():
-			face_captions[key] = h[key]
+	h = pickle.load(open(data_dir+'/','rb'))
+	face_captions = {}
+	for key in h.keys():
+		face_captions[key] = h[key]
 
-		training_image_list = [key for key in face_captions]
-		print("training image list",training_image_list)
-		random.shuffle(training_image_list)
-		return {
-			'image_list' : training_image_list,
-			'captions' : face_captions,
-			'data_length' : len(training_image_list)
-		}
+	training_image_list = [key for key in face_captions]
+	print("training image list",training_image_list)
+	random.shuffle(training_image_list)
+	return {
+		'image_list' : training_image_list,
+		'captions' : face_captions,
+		'data_length' : len(training_image_list)
+	}
 	
 
 
