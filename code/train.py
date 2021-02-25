@@ -85,12 +85,12 @@ def main():
 	if args.resume_model:
 		saver.restore(sess, args.resume_model)
 	
-	loaded_data = load_training_data('/content/drive/MyDrive/data', '/content/list_attr_celeba.csv')
+	loaded_data = load_training_data('/content/drive/MyDrive/data', '/content/img_align_celeba/img_align_celeba')
 	for i in range(args.epochs):
 		batch_no = 0
 		while batch_no*args.batch_size < loaded_data['data_length']:
 			real_images, wrong_images, caption_vectors, z_noise, image_files = get_training_batch(batch_no, args.batch_size, 
-					args.image_size, args.z_dim, args.caption_vector_length, 'train','/content/drive/MyDrive/data', '/content/list_attr_celeba.csv' , loaded_data)
+					args.image_size, args.z_dim, args.caption_vector_length, 'train','/content/drive/MyDrive/data', '/content/img_align_celeba/img_align_celeba', loaded_data)
 		
 
 			# GEN UPDATE TWICE, to make sure d_loss does not go to 0		
@@ -151,7 +151,7 @@ def main():
 def load_training_data(data_dir, data_set):
 	if data_set == 'content/list_attr_celeba.csv':
 		#h = h5py.File(join(data_dir, 'face_tv.hdf5'))
-		h = pickle.load(open(data_dir+'/train_encoding','rb'))
+		h = pickle.load(open(data_dir+'/','rb'))
 		face_captions = {}
 		for key in h.keys():
 			face_captions[key] = h[key]
