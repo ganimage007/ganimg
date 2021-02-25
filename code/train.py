@@ -165,10 +165,7 @@ def load_training_data(data_dir, data_set):
 			'data_length' : len(training_image_list)
 		}
 	
-	else:
-		with open(join(data_dir, 'meta_train.pkl')) as f:
-			meta_data = pickle.load(f)
-		return meta_data
+
 
 def save_for_vis(epoch,batch_no,data_dir, real_images, generated_images, image_files):
 	
